@@ -192,11 +192,3 @@ const socket = io("https://your-backend-url.onrender.com");
 Feel free to open issues, suggest improvements, or send PRs.
 
 ---
-
-## 📄 License
-
-MIT License
-
----
-
-If you want this README customized with **your project name, screenshots, live URLs, backend link, or logo**, tell me and I’ll update it.
