@@ -50,8 +50,6 @@ function Signup() {
 
     const handleRegSubmit = useCallback(async (e) => {
         e.preventDefault();
-        console.log("Reg got chick");
-        console.log(otp,vopt);
         if (password === confirmPassword && otp === vopt && validateUsername(username)) {
             try {
                 console.log("query got fire");
@@ -68,7 +66,6 @@ function Signup() {
                     transition: Bounce,
                     onClose: () => navigate('/login'),
                 });
-                console.log(res);
             } catch (err) {
                 toast.error('ERROR!!', {
                     position: "top-center",
