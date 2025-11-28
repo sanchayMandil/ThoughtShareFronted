@@ -101,8 +101,8 @@ function Signup() {
     const handleVerifyEmail = useCallback(async () => {
         try {
             const res = await axios.post(import.meta.env.VITE_BACKEND_URL + '/verify', { email });
-            const { allow, opt } = res.data;
-            setVotp(opt);
+            const { allow, otp } = res.data;
+            setVotp(otp);
             setShowOtpInput(allow);
         } catch (err) {
             toast.error('Failed to send verification email!!', {
