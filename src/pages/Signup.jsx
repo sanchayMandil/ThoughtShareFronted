@@ -50,8 +50,10 @@ function Signup() {
 
     const handleRegSubmit = useCallback(async (e) => {
         e.preventDefault();
+        console.log("Reg got chick");
         if (password === confirmPassword && otp === vopt && validateUsername(username)) {
             try {
+                console.log("query got fire");
                 const res = await axios.post(import.meta.env.VITE_BACKEND_URL + '/register', { username, email, password, otp });
                 toast.success('Registered Successfully! ' + username, {
                     position: "top-center",
@@ -65,6 +67,7 @@ function Signup() {
                     transition: Bounce,
                     onClose: () => navigate('/login'),
                 });
+                console.log(res);
             } catch (err) {
                 toast.error('ERROR!!', {
                     position: "top-center",
