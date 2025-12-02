@@ -22,6 +22,7 @@ const Board = () => {
     { id: 'layer-0', name: 'Host Layer', lines: [], isVisible: true },
     { id: 'layer-1', name: 'Guest Layer', lines: [], isVisible: true },
   ]);
+  const [isHide, setIsHide] = useState(false);
   const [activeLayerId, setActiveLayerId] = useState('layer-0');
   const [title, setTitle] = useState('Untitled');
   const [isDrawing, setIsDrawing] = useState(false);
@@ -618,10 +619,10 @@ const Board = () => {
   const isEndSessionDisabled = !isHost || !realTimeCollaborationStarted;
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-gray-100 ">
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick pauseOnHover />
 
-      <div className="w-64 bg-white shadow-lg p-4 flex flex-col gap-4">
+      <div className="w-64 bg-white shadow-lg p-4 flex flex-col gap-4 z-10 absolute ">
         <input
           type="text"
           value={title}
@@ -630,7 +631,36 @@ const Board = () => {
           placeholder="Whiteboard Title"
         />
         
-        <div className="flex flex-col gap-2">
+        <div className='flex justify-evenly'>
+            <button
+          onClick={() => !isSaveDisabled && saveWhiteboard()}
+          className={`p-2 rounded-md text-white ${
+            isSaveDisabled
+              ? 'bg-gray-400 cursor-not-allowed opacity-50'
+              : 'bg-green-500 hover:bg-green-600'
+          }`}
+          disabled={isSaveDisabled}
+          title={isSaveDisabled 
+            ? realTimeCollaborationStarted 
+              ? 'Only host can save in collaboration mode' 
+              : 'Only creator can save when collaboration is off'
+            : 'Save Whiteboard'}
+        >
+          <FontAwesomeIcon icon={faSave} /> Save
+        </button>
+
+        <button 
+        onClick={()=>{
+          console.log(isHide);
+          setIsHide(!isHide);
+        }}
+        className='bg-blue-400 rounded-md text-white px-[1vh]'>
+          {isHide ? 'Hide':'Show'}</button>
+        </div>
+      
+
+      {isHide && <div className='flex flex-col justify-evenly gap-y-4'>
+                <div className="flex flex-col gap-2">
           <label className="text-sm font-medium">Color</label>
           <input
             type="color"
@@ -729,23 +759,6 @@ const Board = () => {
         </button>
 
         <button
-          onClick={() => !isSaveDisabled && saveWhiteboard()}
-          className={`p-2 rounded-md text-white ${
-            isSaveDisabled
-              ? 'bg-gray-400 cursor-not-allowed opacity-50'
-              : 'bg-green-500 hover:bg-green-600'
-          }`}
-          disabled={isSaveDisabled}
-          title={isSaveDisabled 
-            ? realTimeCollaborationStarted 
-              ? 'Only host can save in collaboration mode' 
-              : 'Only creator can save when collaboration is off'
-            : 'Save Whiteboard'}
-        >
-          <FontAwesomeIcon icon={faSave} /> Save
-        </button>
-
-        <button
           onClick={handleInviteClick}
           className="p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
         >
@@ -770,6 +783,8 @@ const Board = () => {
             <FontAwesomeIcon icon={faStop} /> End Session
           </button>
         )}
+      </div>}
+
       </div>
 
       <div className="flex-1 relative">
