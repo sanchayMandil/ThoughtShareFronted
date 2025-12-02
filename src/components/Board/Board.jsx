@@ -801,7 +801,7 @@ const Board = () => {
         )}
 
         <Stage
-          width={window.innerWidth - 256}
+          width={window.innerWidth}
           height={window.innerHeight}
           ref={stageRef}
           scaleX={stageScale}
