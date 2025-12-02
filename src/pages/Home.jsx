@@ -2,50 +2,94 @@ import About from "./landingComponenrs/About";
 import Feature from "./landingComponenrs/Feature";
 import FAQ from "./landingComponenrs/FAQ";
 import Hook from "./landingComponenrs/Hook";
-function Home(){
-    return (
-         <>
-   <div className="flex-col justify-items-start p-[80px] drop-shadow-lg relative
-   bg-[url(https://media.istockphoto.com/id/1407863570/photo/innovation-through-ideas-and-inspiration-ideas-human-hand-holding-light-bulb-to-illuminate.jpg?s=612x612&w=0&k=20&c=XqD2JdywyodLSm32dkpjIIMeTsrqc8r7yzXWXUA4fks=)] bg-no-repeat bg-cover">
-    <div className="flex justify-between items-center">
-        <div>
-                    <div className="cursive mt-15 z-5">
-    <span className=" text-[90px] drop-shadow-lg">S</span>
-        <spam className="text-[50px] drop-shadow-lg">
-            tart Collabrating with your friends
-        </spam>
-        <br/>
-        <span className="text-[40px] drop-shadow-lg"> Shape your idea</span>
-        <span className="text-[65px] drop-shadow-lg"> & </span>
-        <span className="text-[40px] drop-shadow-lg">Make it greate...</span>
-    </div>
-        </div>
 
-  {/* shapes */}
-  <div className="flex flex-col pr-[5vw] opacity-55">
-        <div  className=" w-[13vw] h-[13vw] bg-gray-700 blur-[20px]" style={{
-            clipPath: 'polygon(0 0, 0% 100%, 100% 49%)',
-        }}></div>
-           <div  className=" w-[13vw] h-[13vw] bg-gray-800 rotate-180 blur-[15px] -mt-[6vw]" style={{
-            clipPath: 'polygon(0 0, 0% 100%, 100% 49%)',
-        }}></div>
-           <div  className=" w-[10vw] h-[10vw] bg-gray-500 blur-lg -mt-[5.8vw]" style={{
-            clipPath: 'polygon(0 0, 0% 100%, 100% 49%)',
-        }}></div>
-         <div  className=" w-[5vw] h-[5vw] bg-gray-300/50 blur-lg rotate-180 -mt-[4vw] ml-[6vw]" style={{
-            clipPath: 'polygon(0 0, 0% 100%, 100% 49%)',
-        }}></div>
-  </div>
-  
-    </div>
-  
-  <div className="absolute -z-10 w-full h-full top-0 left-0 bg-gradient-to-t from-black/80 opacity-50"></div>
-</div>
-<About/>
-<Feature/>
-<Hook/>
-<FAQ/>
+function Home() {
+  return (
+    <>
+      {/* HERO SECTION */}
+      <div
+        className="
+          relative w-full 
+          bg-cover bg-center bg-no-repeat 
+          py-20 sm:py-24 md:py-32 px-6 md:px-16
+          flex flex-col justify-center -z-10
+        "
+        style={{
+          backgroundImage:
+            "url('https://media.istockphoto.com/id/1407863570/photo/innovation-through-ideas-and-inspiration-ideas-human-hand-holding-light-bulb-to-illuminate.jpg?s=612x612&w=0&k=20&c=XqD2JdywyodLSm32dkpjIIMeTsrqc8r7yzXWXUA4fks=')",
+        }}
+      >
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/60"></div>
+
+        {/* Content */}
+        <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center">
+          
+          {/* Left Text */}
+          <div className="max-w-xl">
+            <h1 className="font-bold text-white leading-tight">
+              <span className="text-6xl sm:text-7xl md:text-8xl drop-shadow-xl block">
+                Start
+              </span>
+
+              <span className="block text-3xl sm:text-4xl md:text-5xl mt-2 drop-shadow-xl">
+                Collaborating with your friends
+              </span>
+
+              <span className="block text-2xl sm:text-3xl md:text-4xl mt-4 drop-shadow-xl">
+                Shape your idea
+              </span>
+
+              <span className="text-5xl sm:text-6xl md:text-6xl mx-2 drop-shadow-xl">
+                &
+              </span>
+
+              <span className="text-2xl sm:text-3xl md:text-4xl drop-shadow-xl">
+                Make it great...
+              </span>
+            </h1>
+          </div>
+
+          {/* Decorative shapes – mobile optimized */}
+          <div className="hidden sm:flex flex-col gap-4 pr-4 opacity-80">
+            <div
+              className="w-32 h-32 bg-gray-700 blur-2xl"
+              style={{
+                clipPath: "polygon(0 0, 0% 100%, 100% 49%)",
+              }}
+            ></div>
+
+            <div
+              className="w-32 h-32 bg-gray-800 rotate-180 blur-xl -mt-10"
+              style={{
+                clipPath: "polygon(0 0, 0% 100%, 100% 49%)",
+              }}
+            ></div>
+
+            <div
+              className="w-24 h-24 bg-gray-500 blur-xl -mt-10"
+              style={{
+                clipPath: "polygon(0 0, 0% 100%, 100% 49%)",
+              }}
+            ></div>
+
+            <div
+              className="w-14 h-14 bg-gray-300/60 blur-xl rotate-180 -mt-8 ml-10"
+              style={{
+                clipPath: "polygon(0 0, 0% 100%, 100% 49%)",
+              }}
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      {/* OTHER SECTIONS */}
+      <About />
+      <Feature />
+      <Hook />
+      <FAQ />
     </>
-    )
+  );
 }
+
 export default Home;
